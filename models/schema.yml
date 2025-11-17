@@ -7,3 +7,35 @@ models:
         tests:
           - unique
           - not_null
+  - name: whale_alert
+    latest_version: 2
+    versions:
+      - v: 1
+        # Matches what's above
+        
+        deprecation_date: 2026-01-01
+        config:
+          enabled: false
+
+      - v: 2
+        # Breaking change: removed total_sent_usd
+        
+        columns:
+          - include: all
+            exclude: [total_sent_usd]
+
+    config:
+      contract:
+        enforced: false
+    columns:
+      - name: TOTAL_SENT
+        data_type: float
+      - name: TX_COUNT
+        data_type: number
+      - name: TOTAL_SENT_USD
+        data_type: float
+      - name: output_address
+        data_type: string
+        data_tests:
+          - valid_btc_address:
+              mval: 'bc1'

@@ -33,6 +33,8 @@ models:
   BTC:
     # Config indicated by + and applies to all files under models/example/
     marts:
+      +post_hook: '{{ create_latest_version_view() }}'
       +materialized: table
     stg:
       +materialized: view
+    
