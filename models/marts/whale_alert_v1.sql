@@ -16,4 +16,3 @@ w.tx_count,
 {{ conversion('w.total_sent') }} as total_sent_usd
 from WHALES w
 
-{# cross join LATEST_PRICE p #}
